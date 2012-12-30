@@ -54,15 +54,18 @@ Support me in making new and better gems:[0m [31;4mhttp://pledgie.com/campaign
       s.add_runtime_dependency(%q<shared-mime-info>, [">= 0"])
       s.add_runtime_dependency(%q<mail>, [">= 2.2.1"])
       s.add_runtime_dependency(%q<mime>, [">= 0.1"])
+      s.add_runtime_dependency(%q<gmail_xoauth>, [">= 0.4.1"])
     else
       s.add_dependency(%q<shared-mime-info>, [">= 0"])
       s.add_dependency(%q<mail>, [">= 2.2.1"])
       s.add_dependency(%q<mime>, [">= 0.1"])
+      s.add_dependency(%q<gmail_xoauth>, [">= 0.4.1"])
     end
   else
     s.add_dependency(%q<shared-mime-info>, [">= 0"])
     s.add_dependency(%q<mail>, [">= 2.2.1"])
     s.add_dependency(%q<mime>, [">= 0.1"])
+    s.add_dependency(%q<gmail_xoauth>, [">= 0.4.1"])
   end
 end
 

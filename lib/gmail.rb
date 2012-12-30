@@ -1,4 +1,5 @@
 require 'net/imap'
+require 'gmail_xoauth'
 
 class Gmail
   VERSION = '0.0.9'
@@ -92,7 +93,7 @@ class Gmail
   #  LOGIN
   ###########################
   def login
-    res = @imap.login(meta.username, meta.password)
+    res = @imap.authenticate('XOAUTH2', meta.username, meta.oauth_access_token)
     @logged_in = true if res && res.name == 'OK'
   end
   def logged_in?
