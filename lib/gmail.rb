@@ -6,18 +6,18 @@ class Gmail
   class NoLabel < RuntimeError; end
 
   ##################################
-  #  Gmail.new(username, password)
+  #  Gmail.new(username, oauth_access_token)
   ##################################
-  def initialize(username, password)
-    # This is to hide the username and password, not like it REALLY needs hiding, but ... you know.
+  def initialize(username, oauth_access_token)
+    # This is to hide the username and oauth_access_token, not like it REALLY needs hiding, but ... you know.
     # Could be helpful when demoing the gem in irb, these bits won't show up that way.
     class << self
       class << self
-        attr_accessor :username, :password
+        attr_accessor :username, :oauth_access_token
       end
     end
     meta.username = username =~ /@/ ? username : username + '@gmail.com'
-    meta.password = password
+    meta.oauth_access_token = oauth_access_token
     @imap = Net::IMAP.new('imap.gmail.com',993,true,nil,false)
     if block_given?
       login # This is here intentionally. Normally, we get auto logged-in when first needed.
@@ -167,7 +167,7 @@ class Gmail
       :port => 587,
       :domain => domain,
       :user_name => meta.username,
-      :password => meta.password,
+      :oauth_access_token => meta.oauth_access_token,
       :authentication => 'plain',
       :enable_starttls_auto => true}]
     end
