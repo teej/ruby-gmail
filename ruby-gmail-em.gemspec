@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{ruby-gmail}
+  s.name = %q{ruby-gmail-em}
   s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
      "lib/gmail/mailbox.rb",
      "lib/gmail/message.rb",
      "lib/smtp_tls.rb",
-     "ruby-gmail.gemspec",
+     "ruby-gmail-em.gemspec",
      "test/test_gmail.rb",
      "test/test_helper.rb"
   ]
@@ -55,17 +55,20 @@ Support me in making new and better gems:[0m [31;4mhttp://pledgie.com/campaign
       s.add_runtime_dependency(%q<mail>, [">= 2.2.1"])
       s.add_runtime_dependency(%q<mime>, [">= 0.1"])
       s.add_runtime_dependency(%q<gmail_xoauth>, [">= 0.4.1"])
+      s.add_runtime_dependency(%q<em-imap>, [">= 0.2.2"])
     else
       s.add_dependency(%q<shared-mime-info>, [">= 0"])
       s.add_dependency(%q<mail>, [">= 2.2.1"])
       s.add_dependency(%q<mime>, [">= 0.1"])
       s.add_dependency(%q<gmail_xoauth>, [">= 0.4.1"])
+      s.add_dependency(%q<em-imap>, [">= 0.2.2"])
     end
   else
     s.add_dependency(%q<shared-mime-info>, [">= 0"])
     s.add_dependency(%q<mail>, [">= 2.2.1"])
     s.add_dependency(%q<mime>, [">= 0.1"])
     s.add_dependency(%q<gmail_xoauth>, [">= 0.4.1"])
+    s.add_dependency(%q<em-imap>, [">= 0.2.2"])
   end
 end
 

@@ -1,5 +1,6 @@
 require 'net/imap'
 require 'gmail_xoauth'
+require 'em-imap'
 
 class Gmail
   VERSION = '0.0.9'
@@ -19,7 +20,7 @@ class Gmail
     end
     meta.username = username =~ /@/ ? username : username + '@gmail.com'
     meta.oauth_access_token = oauth_access_token
-    @imap = Net::IMAP.new('imap.gmail.com',993,true,nil,false)
+    @imap = EM::IMAP.new('imap.gmail.com',993,true)
     if block_given?
       login # This is here intentionally. Normally, we get auto logged-in when first needed.
       yield self
