@@ -81,6 +81,25 @@ class Gmail
     def archive!
       move_to('[Gmail]/All Mail')
     end
+    
+    def from
+      request,part = 'BODY.PEEK[HEADER.FIELDS (FROM)]','BODY[HEADER.FIELDS (FROM)]'
+      res = @gmail.in_mailbox(@mailbox) { @gmail.imap.uid_fetch(uid, request)[0].attr[part] }
+      res.strip.split(" ").reverse_each do |part|
+        if part.include? "@"
+          if part[0] == "<"
+            return part[1..-2]
+          else
+            return part
+          end
+        end
+      end
+    end
+    
+    def header
+      request,part = 'BODY.PEEK[HEADER]','BODY[HEADER]'
+      @gmail.in_mailbox(@mailbox) { @gmail.imap.uid_fetch(uid, request)[0].attr[part] }
+    end
 
     private
 
