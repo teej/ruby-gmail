@@ -88,7 +88,7 @@ class Gmail
       res.strip.split(" ").reverse_each do |part|
         if part.include? "@"
           if part[0] == "<"
-            return part[1..-2]
+            return part.delete("<>").strip
           else
             return part
           end
